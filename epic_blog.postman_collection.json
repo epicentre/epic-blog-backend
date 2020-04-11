@@ -1,0 +1,1090 @@
+{
+	"info": {
+		"_postman_id": "53d36e12-9c61-443c-b23d-d8345711dba9",
+		"name": "Epic Blog",
+		"description": "Collection for testing the Conduit API\n\nhttps://github.com/gothinkster/realworld",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb93aea2-d5da-4b5f-b21d-91ca80057da0",
+								"exec": [
+									"let response = pm.response.json();",
+									"pm.environment.set('token', response.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9ed24183-f18d-4363-ac1e-abb283829227",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"cwepicentre@gmail.com\",\n        \"password\": \"123456\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "04c70236-7a77-400a-a6a4-c3baf3a88b15",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"arifdemir77@gmail.com\",\n        \"password\": \"123456\",\n        \"username\": \"demir\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/register",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Current User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c4b02e19-28ba-4b72-8087-750d865cc9b5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0e6237b-acd8-4263-8d76-8d83c87a44a4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"cwepicentre@gmail.com\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab05271d-ca3b-4fbe-b8a1-64aaa06ac052",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/users/arif",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"arif"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "12c54c99-f0a3-43d9-a580-9c4cf89c5814",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\"}}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/arif/follow",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"arif",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e3461bc-fa55-4454-baab-93b3c3632c4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/celeb_{{USERNAME}}/follow",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"celeb_{{USERNAME}}",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Articles, Favorite",
+			"item": [
+				{
+					"name": "All Articles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "504a70c2-925a-4a53-a508-3f7478ea194a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e711dbf8-8065-4ba8-8b74-f1639a7d8208",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"article\": {\n        \"title\": \"test2\",\n        \"description\": \"description2\",\n        \"body\": \"article content2\",\n        \"tagList\": [\n    \t\t\"nodejs\",\n    \t\t\"javascript\"\n    \t]\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1bd43374-d605-4bd3-9890-a522eacaddb9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"article\": {\n    \t\"title\": \"updated title1\",\n        \"body\": \"updated body1\",\n        \"description\": \"updated description1\",\n        \"tags\": [\"updatedTag\"]\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Article",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Feed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c18ce29d-1737-40f8-8e08-efc8cf56e60f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles/feed",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"feed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articles Favorited by Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ddbae9cc-6f89-4631-a737-2099b67a0bb5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles?favorited=jane",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							],
+							"query": [
+								{
+									"key": "favorited",
+									"value": "jane"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articles by Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3f255ad4-f89e-4653-b86e-cef2d09c9578",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles?author=arif",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "arif"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articles Favorited by Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "feddbb7c-1e69-4395-a903-7fdc240b32b0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles?favorited=arif",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							],
+							"query": [
+								{
+									"key": "favorited",
+									"value": "arif"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single Article by slug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce8e08fd-221d-4d3a-a585-d48c8f08bcc4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articles by Tag",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cd8916d3-b111-4016-b458-e8f8c0e9eb4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles?tag=nodejs",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							],
+							"query": [
+								{
+									"key": "tag",
+									"value": "nodejs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorite Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfbc44a5-867a-43bc-aa4e-2afe8ce62f5e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs/favorite",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfavorite Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85fcd7f5-93cb-4d91-a517-7afb0a23edc6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs/favorite",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "67853a4a-e972-4573-a295-dad12a46a9d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3057f989-15e4-484e-b8fa-a041043d0ac0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create Comment for Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f90c364-cc68-4728-961a-85eb00197d7b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": {\n        \"body\": \"comment test\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs/comments",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Comments for Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "031dd2be-a0da-4f9d-b944-78ac9a6e1527",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs/comments",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment for Article",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/test-8tcdfs/comments/5e8a3ca8d111ff0a30ac3a36",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"test-8tcdfs",
+								"comments",
+								"5e8a3ca8d111ff0a30ac3a36"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "All Tags",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f4ba8008-c44a-48a8-ba79-630a7481ffc2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/tags",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
