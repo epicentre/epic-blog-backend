@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    environment:
+      APP_PORT: ${APP_PORT}
+    networks:
+      - my_network
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - my_network
+
+networks: 
+  my_network:
+    driver: bridge
