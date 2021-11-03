@@ -20,7 +20,7 @@
     "mongoose": "^5.9.7",
     "morgan": "^1.10.0",
     "slugify": "^1.4.0",
-    "validator": "^12.2.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
